@@ -4,18 +4,18 @@ const apikey = 'bcce1b951875cb5081996281fb4acf3c'
 // web uri to create api request
 const uri = 'https://api.openweathermap.org/data/2.5/weather?zip='
 
-/* Helper Functions */
-function generateURL(zipcode) {
-
-    return uri + zipcode + '&appid=' + apikey;
-}
-
 // Create a new date instance dynamically with JS
 let d = new Date();
 let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
 
 // Event listener to add function to existing HTML DOM element
 document.getElementById('generate').addEventListener('click', getDataAndUpdateUI);
+
+/* Helper Functions */
+function generateURL(zipcode) {
+
+    return uri + zipcode + '&appid=' + apikey;
+}
 
 /* Function called by event listener */
 function updateUI(date, temp, content) {
@@ -35,13 +35,13 @@ async function getWeatherData(zipcode) {
     // extracting the data as JSON
     try {
         return await response.json()
-    }
-    catch(error) {
+    }catch(error) {
         console.log("error", error);
     }
 }
 
 function getDataAndUpdateUI(){
+
     zipcode = document.getElementById('zip').value
 
     getWeatherData(zipcode).then(data => {
@@ -51,7 +51,7 @@ function getDataAndUpdateUI(){
     });
 }
 
-async function postWeatherData( url = '', data = {}) {
+async function postWeatherData(url = '', data = {}) {
 
     const response = await fetch(url, {
     method: 'POST', 
@@ -63,9 +63,25 @@ async function postWeatherData( url = '', data = {}) {
   });
 
     try {
-      const newData = await response.json();
-      return newData;
+        const newData = await response.json();
+        // Printing the data which has been successfully sent to the server.
+        console.log(newData);
+        return newData;
     }catch(error) {
-    console.log("error", error);
+        console.log("error", error);
     }
 };
+
+async function retrieveData(url=''){ 
+
+    const request = await fetch(url);
+    try {
+    // Transform into JSON
+    const allData = await request.json();
+    }
+    catch(error) {
+      console.log("error", error);
+    }
+};
+retrieveData('/all');
+// postWeatherData('/add', {"hot": 35});
