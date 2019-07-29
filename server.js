@@ -39,12 +39,12 @@ function callBack(req,res){
   res.send('POST received');
 };
 
-// POST an animal
+// POST a weather condition
 const data = [];
 
-app.post('/animal', addAnimal);
+app.post('/animal', addFetchedWeather);
 
-function addAnimal (req,res){
+function addFetchedWeather (req,res){
     data.push(req.body);
 };
 
