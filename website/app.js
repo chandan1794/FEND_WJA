@@ -1,8 +1,8 @@
 /* Global Variables */
 // Personal API Key for OpenWeatherMap API
-const apikey = 'bcce1b951875cb5081996281fb4acf3c'
+const apikey = 'bcce1b951875cb5081996281fb4acf3c';
 // web uri to create api request
-const uri = 'https://api.openweathermap.org/data/2.5/weather?zip='
+const uri = 'https://api.openweathermap.org/data/2.5/weather?zip=';
 
 // Create a new date instance dynamically with JS
 let d = new Date();
@@ -46,7 +46,7 @@ function getDataAndUpdateUI(){
 
     getWeatherData(zipcode).then(data => {
         let temp = data.main.temp;
-        content = document.getElementById('feelings').value
+        content = document.getElementById('feelings').value;
         updateUI(newDate, temp, content);
     });
 }
@@ -83,5 +83,5 @@ async function retrieveData(url=''){
       console.log("error", error);
     }
 };
-retrieveData('/all');
+// retrieveData('/all');
 // postWeatherData('/add', {"hot": 35});

@@ -2,11 +2,11 @@
 projectData = {"thing":"Something"};
 
 // Require Express to run server and routes
-const express = require('express')
-const port = 3000
+const express = require('express');
+const port = 3000;
 
 // Start up an instance of app
-const app = express()
+const app = express();
 
 /* Middleware*/
 const bodyParser = require('body-parser')
@@ -15,8 +15,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // Cors for cross origin allowance
-const cors = require('cors')
-app.use(cors())
+const cors = require('cors');
+app.use(cors());
 
 
 // Initialize the main project folder
@@ -24,7 +24,7 @@ app.use(express.static('website'));
 
 
 // Setup Server
-app.listen(port, () => console.log(`Server running at localhost:${port}`))
+app.listen(port, () => console.log(`Server running at localhost:${port}`));
 
 app.get('/all', sendData);
 
@@ -39,6 +39,6 @@ app.post('/add', addFetchedWeather);
 
 function addFetchedWeather (req,res){
     data.push(req.body);
-    res.send(data)
+    res.send(data);
 };
 
